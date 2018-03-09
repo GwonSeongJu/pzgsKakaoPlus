@@ -7,8 +7,13 @@ var session  = require('express-session');
 // database
 mongoose.connect(process.env.PZGS_MONGO_DB);
 
+// middlewares
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+//server start
 var db = mongoose.connection;
-db.once("open",function () {
+ db.once("open",function () {
   console.log("DB connected!");
 });
 db.on("error",function (err) {
@@ -16,6 +21,7 @@ db.on("error",function (err) {
 });
 
 // routes
+app.use('/', require('./routes/manage.js'));
 /*
 app.use('/', require('./routes/home'));
 app.use('/users', require('./routes/users'));

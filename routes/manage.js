@@ -1,9 +1,16 @@
 var express  = require('express');
-var app      = express();
-var path     = require('path');
+var router   = express.Router();
 var mongoose = require('mongoose');
-var session  = require('express-session');
 
+
+
+
+
+
+//route
 router.get('/', function (req,res) {
-  res.render("./posts/index.html");
+  res.render("posts/index.html");
 });
+
+
+module.exports = router;
